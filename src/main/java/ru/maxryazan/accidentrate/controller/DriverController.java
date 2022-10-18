@@ -18,8 +18,10 @@ public class DriverController {
         this.driverService = driverService;
     }
 
-    @GetMapping(value = "api/v1/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> showOneById(@PathVariable long id){
-        return driverService.showThisDriver(id);
+    @GetMapping(value = "api/v1/{firstName}/{patronymic}/{lastName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> showOneById(@PathVariable("firstName") String firstName,
+                                         @PathVariable("lastName") String lastName,
+                                         @PathVariable("patronymic") String patronymic){
+        return driverService.showThisDriver(firstName,lastName, patronymic);
     }
 }

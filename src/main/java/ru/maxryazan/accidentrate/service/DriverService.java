@@ -17,8 +17,8 @@ public class DriverService {
         this.driverRepository = driverRepository;
     }
 
-    public ResponseEntity<?> showThisDriver(long id) {
-        Driver driver = driverRepository.findById(id).orElse(null);
+    public ResponseEntity<?> showThisDriver(String firstName, String lastName, String patronymic) {
+        Driver driver = driverRepository.findByFirstNameAndLastNameAndPatronymic(firstName, lastName, patronymic);
         if(driver == null){
             throw new DriverNotFoundException();
         }
